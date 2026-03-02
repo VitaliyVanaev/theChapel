@@ -1,4 +1,48 @@
 (function() {
+     // ======== ПЕРВОЕ ФОТО ========
+    const loader = document.getElementById('loader');
+    const firstSlide = document.querySelector('.slide.active');
+    
+    // Сразу прячем контент (на случай если CSS не успел)
+    document.body.style.overflow = 'hidden';
+    
+    function showContent() {
+        // Показываем контент
+        document.body.style.overflow = '';
+        loader.classList.add('hidden');
+        
+        // Удаляем загрузчик из DOM через секунду
+        setTimeout(() => {
+            if (loader && loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+            }
+        }, 1000);
+    }
+    
+    if (firstSlide) {
+        // Если первое фото уже в кэше
+        if (firstSlide.complete) {
+            console.log('Фото в кэше, показываем сразу');
+            showContent();
+        } else {
+            // Ждем загрузку первого фото
+            console.log('Ждем загрузку первого фото...');
+            firstSlide.addEventListener('load', showContent);
+            
+            // На случай ошибки загрузки
+            firstSlide.addEventListener('error', showContent);
+            
+            // Максимум ждем 5 секунд
+            setTimeout(() => {
+                console.log('Таймаут, показываем сайт');
+                showContent();
+            }, 5000);
+        }
+    } else {
+        // Если вдруг нет фото
+        showContent();
+    }
+
     // СЛАЙДШОУ С ПОДДЕРЖКОЙ СВАЙПОВ
     const slides = document.querySelectorAll('.slide');
     const indicators = document.querySelectorAll('.indicator');
