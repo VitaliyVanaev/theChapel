@@ -52,7 +52,7 @@ body {
 }
 
 .header p {
-    font-size: 13px;
+    font-size: 19px;
     opacity: 0.7;
     font-style: italic;
     border-bottom: 1px solid rgba(230, 190, 150, 0.3);
@@ -575,5 +575,258 @@ body {
     .time-display {
         min-width: 50px;
         font-size: 9px;
+    }
+}
+
+/* ======== АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ ======== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .app-container {
+        max-width: 90%;
+        padding: 30px 24px;
+    }
+    
+    .header h1 {
+        font-size: 36px;
+    }
+    
+    .header p {
+        font-size: 28px;
+    }
+    
+    .gallery {
+        aspect-ratio: 16/9; /* более широкий формат для планшетов */
+    }
+    
+    .audio-text .audio-line {
+        font-size: 16px;
+    }
+    
+    .action-btn {
+        font-size: 24px;
+        padding: 20px 50px;
+    }
+}
+
+/* ======== АДАПТАЦИЯ ДЛЯ ПК ======== */
+@media (min-width: 1024px) {
+    body {
+        padding: 30px;
+        background: #0f0b09;
+    }
+    
+    .app-container {
+        max-width: 900px; /* значительно шире для ПК */
+        padding: 40px 32px;
+        border-radius: 48px;
+    }
+    
+    /* Заголовки крупнее */
+    .header h1 {
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+    
+    .header p {
+        font-size: 28px;
+        padding-bottom: 20px;
+    }
+    
+    /* Галерея красивее */
+    .gallery {
+        aspect-ratio: 16/9; /* широкоформатный режим */
+        border-radius: 32px;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.7);
+    }
+    
+    /* Индикаторы покрупнее */
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .indicator.active {
+        width: 36px;
+    }
+    
+    /* Аудио плеер */
+    .audio-block {
+        padding: 16px 24px;
+    }
+    
+    .play-pause-btn {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .play-icon {
+        border-width: 10px 0 10px 18px;
+    }
+    
+    .pause-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .pause-icon::before,
+    .pause-icon::after {
+        width: 6px;
+        height: 20px;
+    }
+    
+    .audio-text .audio-line {
+        font-size: 18px;
+    }
+    
+    .audio-line:first-child {
+        margin-bottom: 4px;
+    }
+    
+    .player-controls {
+        min-width: 300px;
+    }
+    
+    .progress-bar {
+        height: 6px;
+    }
+    
+    .time-display {
+        font-size: 14px;
+        min-width: 80px;
+    }
+    
+    /* Кнопки */
+    .action-btn {
+        font-size: 28px;
+        padding: 22px 60px;
+        margin: 15px 0 10px;
+        border-radius: 80px;
+    }
+    
+    .action-btn::before {
+        left: 30px;
+        font-size: 28px;
+    }
+    
+    .action-btn::after {
+        right: 30px;
+        font-size: 28px;
+    }
+    
+    .secondary-btn {
+        margin-top: 10px;
+    }
+    
+    /* Информационные карточки */
+    .info-card {
+        font-size: 17px;
+        border-radius: 36px;
+    }
+    
+    .info-card.show {
+        padding: 30px 28px;
+    }
+    
+    .info-card .verse {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .info-card h3 {
+        font-size: 22px;
+        margin: 25px 0 15px;
+    }
+    
+    .info-card p {
+        margin-bottom: 15px;
+        line-height: 1.7;
+    }
+    
+    .info-card .highlight {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+    
+    .info-card .quote {
+        font-size: 20px;
+        padding: 15px;
+    }
+    
+    .info-card .symbol {
+        padding: 18px;
+    }
+    
+    /* Расписание */
+    .schedule-card .schedule {
+        padding: 24px;
+        font-size: 17px;
+    }
+    
+    .schedule-card .contacts {
+        padding: 24px;
+    }
+    
+    .contact-item {
+        font-size: 18px;
+        margin-bottom: 18px;
+    }
+    
+    .contact-icon {
+        font-size: 26px;
+        min-width: 40px;
+    }
+    
+    .map-link {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+    
+    .info-card .final {
+        font-size: 18px;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    
+    .footer {
+        font-size: 14px;
+        margin-top: 30px;
+        opacity: 0.4;
+    }
+}
+
+/* ======== АДАПТАЦИЯ ДЛЯ БОЛЬШИХ ЭКРАНОВ (4K) ======== */
+@media (min-width: 1920px) {
+    body {
+        padding: 50px;
+    }
+    
+    .app-container {
+        max-width: 1200px;
+        padding: 50px 40px;
+    }
+    
+    .header h1 {
+        font-size: 64px;
+    }
+    
+    .header p {
+        font-size: 26px;
+    }
+    
+    .gallery {
+        border-radius: 40px;
+    }
+    
+    .action-btn {
+        font-size: 36px;
+        padding: 28px 80px;
+    }
+    
+    .info-card {
+        font-size: 20px;
+    }
+    
+    .info-card .verse {
+        font-size: 30px;
     }
 }
