@@ -15,7 +15,8 @@
 - HTML5
 - CSS3 (Flexbox, Grid, анимации)
 - JavaScript (ES6+)
-  ![HTML5](https://img.shields.io/badge/HTML5-orange) ![CSS3](https://img.shields.io/badge/CSS3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-yellow)
+
+![HTML5](https://img.shields.io/badge/HTML5-orange) ![CSS3](https://img.shields.io/badge/CSS3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-yellow)
 
 ## 🚀 Установка и запуск
 
