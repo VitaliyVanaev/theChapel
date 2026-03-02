@@ -1,0 +1,579 @@
+/* Сброс и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f0b09;
+    color: #faf3e8;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Контейнер */
+.app-container {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(18, 14, 12, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 36px;
+    border: 1px solid rgba(240, 210, 170, 0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,175,0.1) inset;
+    overflow: hidden;
+    padding: 20px 16px 24px;
+}
+
+/* Заголовок */
+.header {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #f8e8d4;
+    line-height: 1.2;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.header p {
+    font-size: 13px;
+    opacity: 0.7;
+    font-style: italic;
+    border-bottom: 1px solid rgba(230, 190, 150, 0.3);
+    padding-bottom: 12px;
+    margin-top: 4px;
+}
+
+/* Галерея */
+.gallery {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,225,190,0.3);
+    background: #2a201a;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    will-change: opacity;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Индикаторы */
+.slide-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 5;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.4);
+    transition: all 0.3s;
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.indicator.active {
+    width: 24px;
+    background: #f5d5a5;
+    border-color: #ffffff80;
+}
+
+/* ======== АУДИО БЛОК ======== */
+.audio-block {
+    background: rgba(30, 22, 18, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 10px 16px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255,200,160,0.3);
+}
+
+.custom-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Кнопка Play/Pause с кастомными иконками */
+.play-pause-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #dbb68c;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+    padding: 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.play-pause-btn:active {
+    transform: scale(0.95);
+    background: #c9a77d;
+}
+
+/* Кастомная иконка Play (треугольник) */
+.play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 14px;
+    border-color: transparent transparent transparent #1a120c;
+    margin-left: 3px;
+}
+
+/* Кастомная иконка Pause (две полоски) */
+.pause-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pause-icon::before,
+.pause-icon::after {
+    content: '';
+    width: 5px;
+    height: 16px;
+    background-color: #1a120c;
+    border-radius: 1px;
+}
+
+/* Текст аудио - две строки */
+.audio-text {
+    flex: 0 0 auto;
+    margin-right: 4px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.audio-line {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f8e8d4;
+    white-space: nowrap;
+}
+
+/* Правая часть с плеером */
+.player-controls {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 140px;
+}
+
+.timeline {
+    flex: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #dbb68c;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    font-size: 11px;
+    color: #dbb68c;
+    white-space: nowrap;
+    font-family: 'Inter', monospace;
+    min-width: 60px;
+    text-align: right;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+}
+
+/* ======== КНОПКИ ======== */
+.action-btn {
+    background: linear-gradient(145deg, #32281f, #221a14);
+    border: 1.5px solid #c9a77d;
+    color: #f8e3cc;
+    width: 100%;
+    padding: 18px 45px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.2s, transform 0.1s ease;
+    margin: 10px 0 8px;
+    box-shadow: 0 8px 0 #0f0b08, 0 10px 20px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+    position: relative;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.action-btn:active {
+    transform: scale(0.97);
+}
+
+/* Иконка слева */
+.action-btn::before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+}
+
+/* Иконка справа */
+.action-btn::after {
+    content: attr(data-icon);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+}
+
+/* Вторая кнопка (расписание) */
+.secondary-btn {
+    background: linear-gradient(145deg, #2b5a4c, #1d3e34);
+    border: 1.5px solid #c9a77d;
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+/* ======== ИНФОРМАЦИОННЫЕ КАРТОЧКИ ======== */
+.info-card {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease, padding 0.4s;
+    background: rgba(25, 18, 14, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 28px;
+    padding: 0 18px;
+    margin: 0 0 10px 0;
+    border: 1px solid rgba(200, 160, 120, 0.4);
+    color: #f2e2d2;
+    font-size: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.info-card.show {
+    max-height: 8000px;
+    opacity: 1;
+    padding: 20px 18px;
+    margin-top: 10px;
+}
+
+.info-card .verse {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #eaceb0;
+    margin-bottom: 12px;
+    border-left: 3px solid #b5895a;
+    padding-left: 12px;
+}
+
+.info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #eaceb0;
+    margin: 16px 0 10px;
+    text-align: center;
+    border-bottom: 1px solid #b5895a40;
+    padding-bottom: 6px;
+}
+
+.info-card p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.info-card .highlight {
+    background: rgba(181, 137, 90, 0.15);
+    border-left: 4px solid #b5895a;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.info-card .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #f5dbb1;
+    text-align: center;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px;
+    margin: 15px 0;
+}
+
+.info-card .symbol {
+    background: #2e231c;
+    border-radius: 16px;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #b5895a;
+}
+
+.info-card .final {
+    text-align: center;
+    font-size: 16px;
+    color: #f5dbb1;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #b5895a40;
+}
+
+/* ======== КАРТОЧКА РАСПИСАНИЯ ======== */
+.schedule-card .schedule {
+    background: #2e231c;
+    border-radius: 20px;
+    padding: 16px;
+    margin: 15px 0;
+    border: 1px solid #b5895a;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.schedule-card .contacts {
+    background: rgba(181, 137, 90, 0.15);
+    border-radius: 20px;
+    padding: 16px;
+    margin: 15px 0;
+    border: 1px solid #b5895a;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.contact-icon {
+    font-size: 22px;
+    min-width: 30px;
+    text-align: center;
+    color: #f5dbb1;
+}
+
+.contact-link {
+    color: #f5dbb1;
+    text-decoration: none;
+    border-bottom: 1px dashed #b5895a;
+}
+
+.contact-link:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #f5dbb1;
+}
+
+.map-hint {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.map-link {
+    display: inline-block;
+    background: #b5895a;
+    color: #1a120c;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.map-link:hover {
+    background: #d4a373;
+    transform: scale(1.02);
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    font-size: 10px;
+    opacity: 0.3;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+/* ======== АДАПТАЦИЯ ======== */
+@media (max-width: 380px) {
+    .app-container { padding: 16px 12px; }
+    .header h1 { font-size: 24px; }
+    
+    .action-btn {
+        font-size: 18px;
+        padding: 15px 40px;
+    }
+    
+    .action-btn::before,
+    .action-btn::after {
+        font-size: 20px;
+    }
+    
+    .action-btn::before {
+        left: 15px;
+    }
+    
+    .action-btn::after {
+        right: 15px;
+    }
+    
+    .secondary-btn {
+        font-size: 18px;
+    }
+    
+    .audio-block {
+        padding: 8px 12px;
+    }
+    
+    .play-pause-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .play-icon {
+        border-width: 7px 0 7px 12px;
+    }
+    
+    .pause-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .pause-icon::before,
+    .pause-icon::after {
+        width: 4px;
+        height: 14px;
+    }
+    
+    .audio-line {
+        font-size: 13px;
+    }
+    
+    .player-controls {
+        gap: 6px;
+        min-width: 120px;
+    }
+    
+    .time-display {
+        font-size: 10px;
+        min-width: 55px;
+    }
+}
+
+@media (max-width: 340px) {
+    .app-container { padding: 12px; }
+    .header h1 { font-size: 22px; }
+    
+    .action-btn {
+        font-size: 16px;
+        padding: 12px 35px;
+    }
+    
+    .custom-player {
+        gap: 8px;
+    }
+    
+    .play-pause-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .play-icon {
+        border-width: 6px 0 6px 10px;
+    }
+    
+    .pause-icon {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .pause-icon::before,
+    .pause-icon::after {
+        width: 3px;
+        height: 12px;
+    }
+    
+    .audio-line {
+        font-size: 12px;
+    }
+    
+    .player-controls {
+        min-width: 110px;
+    }
+    
+    .time-display {
+        min-width: 50px;
+        font-size: 9px;
+    }
+}

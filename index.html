@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1512">
+    <title>Храм-часовня Николая Чудотворца | Нижний Новгород</title>
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>Храм-часовня</h1>
+            <p>святителя Николая Чудотворца</p>
+        </div>
+
+        <!-- СЛАЙДШОУ -->
+        <div class="gallery" id="gallery">
+            <img class="slide active" src="images/30_1.jpg" alt="Храм снаружи" loading="lazy">
+            <img class="slide" src="images/24_1.jpg" alt="Вход храма" loading="lazy">
+            <img class="slide" src="images/25_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/26_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/27_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/28_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/29_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/36_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/37_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/40_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/41_1.jpg" alt="Интерьер" loading="lazy">
+            <img class="slide" src="images/42_1.jpg" alt="Интерьер" loading="lazy">
+            
+            <div class="slide-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+        </div>
+
+        <!-- АУДИО плеер -->
+        <div class="audio-block">
+            <div class="custom-player" id="customAudioPlayer">
+                <button class="play-pause-btn" id="playPauseBtn">
+                    <span class="play-icon"></span>
+                    <span class="pause-icon" style="display: none;"></span>
+                </button>
+                
+                <div class="audio-text">
+                    <div class="audio-line">Рассказ</div>
+                    <div class="audio-line">о храме</div>
+                </div>
+                
+                <div class="player-controls">
+                    <div class="timeline">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
+                
+                <audio id="audioElement" preload="metadata">
+                    <source src="audio/rasskaz-o-hrame.mp3" type="audio/mpeg">
+                    <source src="audio/rasskaz-o-hrame.ogg" type="audio/ogg">
+                    Ваш браузер не поддерживает аудио элемент.
+                </audio>
+            </div>
+        </div>
+
+        <!-- КНОПКА 1: История храма -->
+        <button class="action-btn" id="toggleHistoryBtn" data-icon="✙" data-open-text="История храма" data-close-text="Скрыть историю">
+            История храма
+        </button>
+
+        <!-- СКРЫТЫЙ ТЕКСТ (ИСТОРИЯ) -->
+        <div class="info-card" id="historyCard">
+            <div class="verse">«…дом мой домом молитвы наречется»</div>
+            
+            <h3>СТРАНИЦЫ ИСТОРИИ ИЛИ ВОССТАНОВЛЕННАЯ СПРАВЕДЛИВОСТЬ</h3>
+            
+            <p>Храм-часовня в честь святителя Николая Чудотворца построена на месте разрушенного в годы советского богоборчества Никольского Верхне-Посадского храма. Храма, который, как пишет историк церкви XIX века Николай Иванович Храмцовский, удивительного по внутренней отделке, богатству украшений и ризницы.</p>
+            
+            <p>Замечательна эта церковь была еще тем, что в пятницу и субботу Страстной недели украшалась трауром, а на Светлое Христово Воскресение иллюминировалась великолепнее всех городских церквей.</p>
+            
+            <p>Данный храм располагался возле Никольского кладбища – старинного некрополя в центре города. Возле стен храма были погребены многие известные нижегородцы, а также участники ополчения Минина и Пожарского, скончавшиеся от ран и болезней.</p>
+            
+            <p>В тридцатые годы прошлого столетия храм был разрушен, а на его месте построена гостиница «Москва». В 1997 году она сгорела, и было начато строительство новой гостиницы. В ходе работ были обнаружены фрагменты фундамента церкви и захоронений XV–XVII веков и строительство гостиницы было остановлено.</p>
+            
+            <p>Были начаты археологические раскопки, вследствие которых удалось извлечь примерно тысячу предметов, относящихся к культурному слою от 14 до 17 столетия. Примерно 700 найденных археологами вещей: изделия из цветных металлов с позолотой, булавы и одежда были переданы в музей ННГУ, а многочисленные останки людей были переданы на хранение в Нижегородскую епархию.</p>
+            
+            <div class="highlight">
+                <p>В 2013 году на месте снесенной Никольской церкви был заложен храм-часовня во имя святителя Николая. В 2014 году туда перенесли останки, собранные во время раскопок.</p>
+            </div>
+            
+            <p>Так появилась костница, которая находится в крипте храма. Чтобы увидеть останки местных ополченцев, нужно спуститься вниз по двум лестничным проемам. Костница находится за стеной по правую сторону и изолирована от посетителей прекрасно выполненной кованой оградой!</p>
+            
+            <p class="quote">«Здесь лежат наши молитвенники, которых Господь слышит и которые за нас молятся!» - говорят многочисленные туристы, приезжающие поклониться останкам защитников нашего Отечества.</p>
+            
+            <h3>Архитектура и убранство</h3>
+            
+            <p>Само здание храма-часовни возведено по традиционным технологиям из красного кирпича на известковом растворе. Туристов, выходящих из Никольской башни Нижегородского Кремля, сразу привлекает и манит к себе это белоснежное Божье строение на противоположной стороне.</p>
+            
+            <p>В архитектурном плане храм-часовня представляет собой четверик, увенчанный куполом шлемовидной формы. Купол церкви венчает крест якореобразной формы. Такая форма главы символизирует духовную брань церкви с силами зла и напоминает о воинской доблести защитников.</p>
+            
+            <div class="symbol">
+                <p><strong>Якорь</strong> – древнехристианский символ надежды на Царствие Небесное. Как якорь удерживает корабль на волнах, так и Церковь является незыблемым оплотом всех верующих.</p>
+            </div>
+            
+            <p>Прекрасно и внутреннее убранство святыни, оформленное фресками в византийском стиле с использованием натуральных материалов. В росписи храма присутствуют сцены из жития святителя Николая.</p>
+            
+            <p>Так была восстановлена историческая справедливость, когда на месте разрушенного храма, в наше благодатное время, появился новый храм. Хранение же останков в костнице – это способ увековечить память о героях, которые внесли вклад в защиту Родины. Защищая от осквернения останки предков, отдавая дань их памяти, мы восстанавливаем связь Церкви Небесной, торжествующей, и Церкви земной, воинствующей.</p>
+            
+            <p class="final"><strong>Мы ждем Вас в храме-часовне во имя святителя и чудотворца Николая!</strong></p>
+        </div>
+
+        <!-- КНОПКА 2: Расписание -->
+        <button class="action-btn secondary-btn" id="toggleScheduleBtn" data-icon="🕯" data-open-text="Расписание" data-close-text="Скрыть расписание">
+            Расписание
+        </button>
+
+        <!-- СКРЫТЫЙ ТЕКСТ (РАСПИСАНИЕ И КОНТАКТЫ) -->
+        <div class="info-card schedule-card" id="scheduleCard">
+            <div class="verse">«Двери храма открыты для всех»</div>
+            
+            <h3>РАСПИСАНИЕ БОГОСЛУЖЕНИЙ</h3>
+            
+            <div class="schedule">
+                <strong>🕯 Ежедневно:</strong><br>
+                • Храм открыт с 9:00 до 18:00<br><br>
+                
+                <strong>🕯 Четверг:</strong><br>
+                • 12:00 — Молебен с акафистом святителю Николаю<br><br>
+                
+                <strong>🕯 Суббота:</strong><br>
+                • Божественная Литургия<br>
+                • По окончании — Панихида в крипте храма
+            </div>
+
+            <div class="contacts">
+                <h3>КОНТАКТЫ</h3>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">☎</span>
+                    <a href="tel:+78312827993" class="contact-link">+7 (831) 282-79-93</a>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">⛪</span>
+                    <span>ул. Пожарского, 9А</span>
+                </div>
+
+                <div class="map-hint">
+                    <a href="https://yandex.ru/maps/?text=Нижний Новгород, ул. Пожарского, 9А" target="_blank" class="map-link">
+                        Открыть в картах
+                    </a>
+                </div>
+            </div>
+
+            <div class="final">
+                <strong>Мы ждем Вас в храме-часовне во имя святителя и чудотворца Николая!</strong>
+            </div>
+        </div>
+
+        <div class="footer">Нижний Новгород · 2026</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
